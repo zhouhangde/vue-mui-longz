@@ -11,6 +11,7 @@ import Home from './components/Home'
 import TodoList from './components/TodoList'
 import Blog from './components/Blog'
 import Buju1 from './components/Buju1'
+import './assets/js/mui'
 
 // import Users from './components/Users'
 
@@ -29,7 +30,6 @@ Vue.use(VueRouter)
 // Vue.use(VueResource)
 Vue.use(ElementUI) // Vue全局使用
 
-Vue.use(Mintui)
 
 //配置路由
 const router =new VueRouter({
