@@ -3,7 +3,7 @@
       <h1>hello</h1>
       <ul>
           <!--<li v-for="user in users" v-on:click="user.show=!user.show">-->
-        <li v-for="user in users" v-on:click="user.show=!user.show">
+        <li v-for="user in users" v-on:click="user.show=!user.show" :key="user.id">
               <h2>{{user.name}}</h2>
               <!--<h3 v-show="user.show">{{user.position}}</h3>-->
               <h3 v-show="user.show">{{user.email}}</h3>

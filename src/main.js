@@ -11,9 +11,11 @@ import Home from './components/Home'
 import TodoList from './components/TodoList'
 import Blog from './components/Blog'
 import Buju1 from './components/Buju1'
+
 // import Users from './components/Users'
 
 Vue.prototype.$http = Axios // 类似于vue-resource的调用方法，之后可以在实例里直接用this.$http.get()等
+
 Vue.config.productionTip = false
 
 //全局注册组件,前面为组件名称，后面为对应的组件
@@ -26,6 +28,8 @@ Vue.use(VueRouter)
 //使用http,可全局使用
 // Vue.use(VueResource)
 Vue.use(ElementUI) // Vue全局使用
+
+Vue.use(Mintui)
 
 //配置路由
 const router =new VueRouter({

@@ -1,25 +1,27 @@
 <!--1模板：html结构-->
 <template>
   <div id="app">
-    <ul>
-      <!--对应相应的路由地址，a默认会不断请求加载，会影响使用效果-->
+    <!--对应相应的路由地址，a默认会不断请求加载，会影响使用效果-->
       <!--<li><a href="/">Home</a></li>
       <li><a href="/helloworld">Hollo</a></li>-->
 
       <!--使用路由跳转做导航-->
+    <!-- <ul>
       <li><router-link to="/home">Home</router-link></li>
       <li><router-link to="/helloworld">helloworld</router-link></li>
       <li><router-link to="/login">login</router-link></li>
       <li><router-link to="/todolist">todolist</router-link></li>
       <li><router-link to="/blog">blog</router-link></li>
       <li><router-link to="/buju1">两栏布局</router-link></li>
-    </ul>
+    </ul> -->
     <router-view></router-view>
   </div>
 </template>
 
 <!--2行为：处理逻辑-->
 <script>
+// import mui from 'src/assets/js/mui.js'
+// import byLz from 'src/assets/js/byLz.js'
 export default {
   name: 'App',
   data(){

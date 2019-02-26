@@ -10,7 +10,7 @@
           <el-col :xs="24">
             <template v-if="!Done"> <!--v-if和v-for不能同时在一个元素内使用，因为Vue总会先执行v-for-->
               <template v-for="(item, index) in list">
-                <div class="todo-list" v-if="item.status == false">
+                <div class="todo-list" v-if="item.status == false" :key="item.id">
                   <span class="item">
                     {{ index + 1 }}. {{ item.content }}
                   </span>
@@ -29,7 +29,7 @@
         <el-tab-pane label="已完成事项" name="second">
           <template v-if="count > 0">
             <template v-for="(item, index) in list">
-              <div class="todo-list" v-if="item.status == true">
+              <div class="todo-list" v-if="item.status == true" :key="item.id">
                 <span class="item finished">
                   {{ index + 1 }}. {{ item.content }}
                 </span>

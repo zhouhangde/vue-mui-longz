@@ -1,80 +1,108 @@
 <template>
-  <el-row class="content">
-    <el-col :xs="24" :sm="{span: 6,offset: 9}">
-      <span class="title">
-       欢迎登录 
-      </span>
-      <el-row>
-        <el-input 
-          v-model="account" 
-          placeholder="账号"
-          type="text">
-        </el-input>
-        <el-input 
-          v-model="password" 
-          placeholder="密码"
-          type="password"
-          @keyup.enter.native="loginToDo">
-        </el-input>
-        <!-- 增加一个click方法 loginToDo -->
-        <el-button type="primary" @click="loginToDo">登录</el-button>
-      </el-row>
-    </el-col>
-  </el-row>
+     
+    <div>
+			<mt-header fixed title="我的世界">2341</mt-header>
+		</div>
 </template>
 
 <script>
-export default {
-  data () {
-    return {
-      account: '',
-      password: ''
-    };
-  },
-  methods: {
-    loginToDo() {
-      let obj = {
-        name: this.account,
-        password: this.password
-      } 
-      this.$http.post('/auth/user', obj) // 将信息发送给后端
-        .then((res) => { // axios返回的数据都在res.data里
-          if(res.data.success){ // 如果成功
-            sessionStorage.setItem('demo-token',res.data.token); // 用sessionStorage把token存下来
-            this.$message({ // 登录成功，显示提示语
-              type: 'success',
-              message: '登录成功！'
-            }); 
-            this.$router.push('/todolist') // 进入todolist页面，登录成功
-          }else{
-            this.$message.error(res.data.info); // 登录失败，显示提示语
-            sessionStorage.setItem('demo-token',null); // 将token清空
+      export default {
+        data () {
+          return {
+            userName:'',
+            password:'',
+            checkedTaccount:'',
+            checkedTpasswod:''
+          };
+        },
+        created:function(){
+        },
+        mounted:function(){
+          /* 记住用户名和密码的赋值功能 */
+          var rememberUsername = localStorage.getItem("rememberUsername");
+          var rememberPassword = localStorage.getItem("rememberPassword");
+          if(rememberUsername !=null){
+            this.userName = rememberUsername;
+            this.checkedTaccount = true;
           }
-        }, (err) => {
-            this.$message.error('请求错误！')
-            sessionStorage.setItem('demo-token',null); // 将token清空
-        })
-    }
-  }
-};
+          if(rememberPassword !=null){
+            this.password = rememberPassword;
+            this.checkedTpasswod = true;
+          }
+        }, 
+        methods: {
+          login:function(event){
+              if(this.userName =='' || this.password==''){
+                mui.alert('账号或密码不能为空！');
+                return false;
+              }if(this.userName !='zhouhang'){
+                mui.alert('用户不存在！');
+                return false;
+              }else{
+              /* 设置记住用户名和密码 */
+                if(this.checkedTaccount){
+                  localStorage.setItem("rememberUsername", this.userName);
+                }else{
+                  localStorage.removeItem("rememberUsername");
+                }
+                if(this.checkedTpasswod){
+                  localStorage.setItem("rememberPassword", this.password);
+                }else{
+                  localStorage.removeItem("rememberPassword");
+                }
+                
+                /* 登录验证密码 */
+                var url = './assets/data/login.json';
+                $ByLz.muiAjax(url,function(data){
+                if(data.loginData.code == 200){
+                  mui.toast('登录成功！');
+                  //打开主页面
+                  window.location.href="index.html"
+                }else{
+                  mui.toast('登录失败！');
+                }
+                });
+              }
+          }
+        }
+      };
 </script>
 
-<style lang="stylus" scoped>
-  .el-row.content{
-     padding: 16px;
-  }
-   
-  .title{
-     font-size: 28px;
-  }
-    
-  .el-input{
-     margin: 12px 0;
-  }
-    
-  .el-button{
-     width: 100%;
-     margin-top: 12px;  
-  }
+<style scoped>
+    .my-content{
+      margin-top: 30%;
+      overflow: hidden;
+    }
+    .my-login-header{
+      text-align: center;
+    }
+    .my-login-form{
+      padding: 1rem;
+      overflow: hidden;
+    }
+    .my-login-btn{
+      width: 100%;
+    }
+    .my-login-lable{
+      width:30rem;
+    }
+    .my-input-account{
+      /* 默认值。允许浮动元素出现在两侧。 */
+      clear: none;
+    }
+    .my-input-account label {
+      padding-top: 0px;
+    }
+
+    .my-input-account label {
+      padding-right: 50px;
+    }
+    .my-input-account input[type=checkbox] {
+      top: 0px;
+    }
+  
+    .my-input-account input[type=checkbox]:before{
+      font-size: 20px;
+    }
      
 </style>

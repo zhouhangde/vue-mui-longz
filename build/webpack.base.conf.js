@@ -12,9 +12,11 @@ function resolve (dir) {
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
+  // 入口为main.js
   entry: {
     app: './src/main.js'
   },
+  // 输出路径
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
@@ -23,14 +25,23 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.js', '.vue', '.json','.css'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
     }
   },
+  // 配置第三方模块加载器
   module: {
+    // 第三方模块的匹配规则
     rules: [
+      {
+        test: /\.css$/,
+        use:[
+          'style-loader',
+          'css-loader'
+        ]
+      },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
