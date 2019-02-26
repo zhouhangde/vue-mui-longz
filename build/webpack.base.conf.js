@@ -36,6 +36,18 @@ module.exports = {
     // 第三方模块的匹配规则
     rules: [
       {
+        test: /\.css$/,
+        use:[
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader'
+          }
+        ],
+        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+      },
+      {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: vueLoaderConfig

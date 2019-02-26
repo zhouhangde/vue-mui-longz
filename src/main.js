@@ -11,7 +11,11 @@ import Home from './components/Home'
 import TodoList from './components/TodoList'
 import Blog from './components/Blog'
 import Buju1 from './components/Buju1'
-import './assets/js/mui'
+import Mui from 'vue-awesome-mui'  
+import 'vue-awesome-mui/mui/dist/css/mui.css'  
+import "vue-awesome-mui/mui/examples/hello-mui/css/icons-extra.css";  
+// mount with global  
+Vue.use(Mui)  
 
 // import Users from './components/Users'
 
@@ -29,6 +33,7 @@ Vue.use(VueRouter)
 //使用http,可全局使用
 // Vue.use(VueResource)
 Vue.use(ElementUI) // Vue全局使用
+
 
 
 //配置路由

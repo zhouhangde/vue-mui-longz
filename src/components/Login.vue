@@ -1,7 +1,14 @@
 <template>
      
     <div>
-			<mt-header fixed title="我的世界">2341</mt-header>
+        <ul class="mui-table-view"> 
+            <li class="mui-table-view-cell mui-collapse">
+                <a class="mui-navigate-right" href="#">面板1</a>
+                <div class="mui-collapse-content">
+                    <p>面板1子内容</p>
+                </div>
+            </li>
+        </ul>
 		</div>
 </template>
 

@@ -46,3 +46,9 @@ EditorConfig 能很好的“无痛”地解决ESLint 之类的一系列工具对
 │   ├── main.js // 引入Vue等资源、挂载Vue的入口js
 │   └── utils // 工具文件夹-封装的可复用的方法、功能
 └── yarn.lock // 用yarn自动生成的lock文件
+
+基于Mui的Vue组件库
+http://ask.dcloud.net.cn/article/12694
+
+mint -ui  移动端组件，暂时未用
+http://mint-ui.github.io/docs/#/zh-cn2/switch
