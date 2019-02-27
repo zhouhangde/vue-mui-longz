@@ -68,34 +68,42 @@
               if(this.userName =='' || this.password==''){
                 mui.alert('账号或密码不能为空！');
                 return false;
-              }if(this.userName !='zhouhang'){
-                mui.alert('用户不存在！');
-                return false;
               }else{
-              /* 设置记住用户名和密码 */
-                if(this.checkedTaccount){
-                  localStorage.setItem("rememberUsername", this.userName);
-                }else{
-                  localStorage.removeItem("rememberUsername");
-                }
-                if(this.checkedTpasswod){
-                  localStorage.setItem("rememberPassword", this.password);
-                }else{
-                  localStorage.removeItem("rememberPassword");
-                }
                 
-                /* 登录验证密码 */
-                var url = '/static/data/login.json';
-                $ByLz.muiAjax(url,function(data){
-                  console.log(data)
-                  if(data.loginData.code == 200){
-                    mui.toast('登录成功！');
-                    //打开主页面
-                    // window.location.href="index.html"
-                  }else{
-                    mui.toast('登录失败！');
-                  }
-                });
+               /*  请求传参  */
+                let obj = {
+                  name: this.userName,
+                  password: this.password
+                } 
+                this.$http.post('/auth/user', obj) // 将信息发送给后端
+                  .then((res) => { // axios返回的数据都在res.data里
+                    if(res.data.success){ // 如果成功
+                    
+                      /* 设置记住用户名和密码 */
+                      if(this.checkedTaccount){
+                        localStorage.setItem("rememberUsername", this.userName);
+                      }else{
+                        localStorage.removeItem("rememberUsername");
+                      }
+                      if(this.checkedTpasswod){
+                        localStorage.setItem("rememberPassword", this.password);
+                      }else{
+                        localStorage.removeItem("rememberPassword");
+                      }
+
+                      sessionStorage.setItem('demo-token',res.data.token); // 用sessionStorage把token存下来
+                      mui.toast('登录成功！');
+                      this.$router.push('/todolist') // 进入todolist页面，登录成功
+                    }else{
+                      mui.toast(res.data.info);
+                      sessionStorage.setItem('demo-token',null); // 将token清空
+                    }
+                  }, (err) => {
+                      mui.toast('请求错误！');
+                      sessionStorage.setItem('demo-token',null); // 将token清空
+                  })
+
+                
               }
           }
         }

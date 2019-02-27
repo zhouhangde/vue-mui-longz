@@ -24,7 +24,7 @@ import Mui from 'vue-awesome-mui'
 // 引入mui的组件css
 import 'vue-awesome-mui/mui/dist/css/mui.css'  
 // 引入mui的衍生图标库
-import "vue-awesome-mui/mui/examples/hello-mui/css/icons-extra.css";  
+// import "vue-awesome-mui/mui/examples/hello-mui/css/icons-extra.css";  
 // 引入公共css
 import './assets/css/common'
 // 引入公共的styl，更高于less和sass

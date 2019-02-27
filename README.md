@@ -53,6 +53,19 @@ http://ask.dcloud.net.cn/article/12694
 mint -ui  移动端组件，暂时未用
 http://mint-ui.github.io/docs/#/zh-cn2/switch
 
-
+.gitkeep文件
+是不允许提交一个空的目录到版本库上的,可以在空的文件夹里面建立一个.gitkeep文件，然后提交去即可。
+其实在git中 .gitkeep 就是一个占位符。可以用其他 比如 .nofile等文件作为占位符。
 <style scoped lang="stylus" rel="stylesheet/stylus">
 @import "./assets/stylus/mui.styl"
+
+/* mui.css内部svg打包错误 */
+https://segmentfault.com/q/1010000012751388
+
+手把手教你webpack3（6）css-loader详细使用说明
+https://blog.csdn.net/qq20004604/article/details/78689170
+
+
+HBuilder打包app(vue项目)   -----很重要
+https://blog.csdn.net/niesiyuan000/article/details/78890240
+

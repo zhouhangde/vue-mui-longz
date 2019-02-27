@@ -53,7 +53,9 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    
+    // 将assetsPublicPath中的/修改为./为了hbuilder打包使用
+    assetsPublicPath: './',
 
     /**
      * Source Maps
