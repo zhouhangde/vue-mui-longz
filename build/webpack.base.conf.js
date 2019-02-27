@@ -37,15 +37,14 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use:[
-          {
-            loader: 'style-loader'
-          },
-          {
-            loader: 'css-loader'
-          }
-        ],
-        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+        loader: 'style-loader!css-loader',
+        include:['node build/dev-server.js']
+      },
+      {
+        test: /\.styl$/,
+        loader: 'style-loader!css-loader!stylus-loader',
+        // 解决vue报错/ style-loader: Adds some css to the DOM by adding a <style> tag
+        include:['node build/dev-server.js']
       },
       {
         test: /\.vue$/,

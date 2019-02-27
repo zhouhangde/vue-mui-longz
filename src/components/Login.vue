@@ -1,14 +1,40 @@
 <template>
      
     <div>
-        <ul class="mui-table-view"> 
-            <li class="mui-table-view-cell mui-collapse">
-                <a class="mui-navigate-right" href="#">面板1</a>
-                <div class="mui-collapse-content">
-                    <p>面板1子内容</p>
+        <div class="my-content" id="login">
+          	<div class="my-login-header">
+              <img src="../assets/img/login-bg.png" width="30%" />
+              <h3>和平农庄-运营管理平台</h3>
+            </div>
+            <div class="my-login-form">
+              <form class="mui-input-group">
+                <div class="mui-input-row">
+                  <label>用户名</label>
+                  <input type="text" v-model="userName" class="mui-input-clear" placeholder="请输入用户名">
                 </div>
-            </li>
-        </ul>
+                <div class="mui-input-row">
+                  <label>密码</label>
+                  <input type="password" v-model="password" class="mui-input-password" placeholder="请输入密码">
+                </div>
+                <div class="mui-button-row">
+                  <button type="button" class="mui-btn mui-btn-primary my-login-btn" @click="login">登录</button>
+                </div>
+                <div>
+                  <div style="float:left;" class="my-input-account mui-checkbox">
+                    <label style="font-size:14px;">记住账号</label>
+                    <input id="rememberUsername"
+                      v-model="checkedTaccount"
+                      type="checkbox">
+                  </div>
+                  <div style="float:right;" class="my-input-account mui-checkbox">
+                    <label style="font-size:14px;">记住密码</label>
+                    <input id="rememberPassword" v-model="checkedTpasswod" type="checkbox">
+                  </div>
+                </div>
+                
+              </form>	
+            </div>
+          </div>`
 		</div>
 </template>
 
@@ -59,15 +85,16 @@
                 }
                 
                 /* 登录验证密码 */
-                var url = './assets/data/login.json';
+                var url = '/static/data/login.json';
                 $ByLz.muiAjax(url,function(data){
-                if(data.loginData.code == 200){
-                  mui.toast('登录成功！');
-                  //打开主页面
-                  window.location.href="index.html"
-                }else{
-                  mui.toast('登录失败！');
-                }
+                  console.log(data)
+                  if(data.loginData.code == 200){
+                    mui.toast('登录成功！');
+                    //打开主页面
+                    // window.location.href="index.html"
+                  }else{
+                    mui.toast('登录失败！');
+                  }
                 });
               }
           }

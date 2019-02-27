@@ -15,6 +15,7 @@
 			type:'get',//HTTP请求类型
 			timeout:20000,//超时时间设置为5秒；
 			success:function(data){//服务器返回响应
+				console.log("1111");
 			   callback(data);
 		    }
 		})

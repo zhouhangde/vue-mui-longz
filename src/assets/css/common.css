@@ -1,0 +1,5 @@
+/* 解决mui默认的返回报错警告 */
+html {
+    touch-action: none;
+}
+	

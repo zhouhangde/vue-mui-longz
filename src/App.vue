@@ -20,8 +20,6 @@
 
 <!--2行为：处理逻辑-->
 <script>
-// import mui from 'src/assets/js/mui.js'
-// import byLz from 'src/assets/js/byLz.js'
 export default {
   name: 'App',
   data(){
@@ -33,6 +31,7 @@ export default {
 }
 </script>
 
+<!--默认的css的格式-->
 <style scoped>
     ul{
        overflow: hidden;

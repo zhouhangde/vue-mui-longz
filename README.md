@@ -52,3 +52,7 @@ http://ask.dcloud.net.cn/article/12694
 
 mint -ui  移动端组件，暂时未用
 http://mint-ui.github.io/docs/#/zh-cn2/switch
+
+
+<style scoped lang="stylus" rel="stylesheet/stylus">
+@import "./assets/stylus/mui.styl"
